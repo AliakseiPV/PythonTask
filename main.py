@@ -13,6 +13,13 @@ def add_task():
     else:
         tkinter.messagebox.showwarning(message="Enter a task.")
 
+def delete_task():
+    try:
+        task_index = listbox.curselection()[0]
+        listbox.delete(task_index)
+    except: 
+        tkinter.messagebox.showwarning(message="Select a task.")   
+
 frame = tkinter.Frame(root)
 frame.pack()
 
@@ -30,6 +37,9 @@ entry.pack()
 
 button_add = tkinter.Button(root, text="Add", width=48, command=add_task)
 button_add.pack()
+
+button_delete = tkinter.Button(root, text="Deelete", width=48, command=delete_task)
+button_delete.pack()
 
 
 root.mainloop()
