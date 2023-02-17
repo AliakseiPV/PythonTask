@@ -20,6 +20,10 @@ def delete_task():
     except: 
         tkinter.messagebox.showwarning(message="Select a task.")   
 
+def save_task():  
+    tasks = listbox.get(0, listbox.size())
+    pickle.dump(tasks, open("tasks.dat", "wb")) 
+
 frame = tkinter.Frame(root)
 frame.pack()
 
@@ -40,6 +44,9 @@ button_add.pack()
 
 button_delete = tkinter.Button(root, text="Deelete", width=48, command=delete_task)
 button_delete.pack()
+
+button_save = tkinter.Button(root, text="Save tasks", width=48, command=save_task)
+button_save.pack()
 
 
 root.mainloop()
