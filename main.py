@@ -31,7 +31,10 @@ def load_task():
         for task in tasks:
             listbox.insert(tkinter.END, task)
     except:   
-        tkinter.messagebox.showwarning(message="No data file.")        
+        tkinter.messagebox.showwarning(message="No data file.")  
+
+def clear_task():
+      listbox.delete(0,tkinter.END)                
 
 frame = tkinter.Frame(root)
 frame.pack()
@@ -60,5 +63,7 @@ button_save.pack()
 button_load = tkinter.Button(root, text="Load tasks", width=48, command=load_task)
 button_load.pack()
 
+button_clear = tkinter.Button(root, text="Clear tasks", width=48, command=clear_task)
+button_clear.pack()
 
 root.mainloop()
