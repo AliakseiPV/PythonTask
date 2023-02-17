@@ -24,6 +24,15 @@ def save_task():
     tasks = listbox.get(0, listbox.size())
     pickle.dump(tasks, open("tasks.dat", "wb")) 
 
+def load_task():
+    try:
+        tasks = pickle.load(open("tasks.dat", "rb"))
+        listbox.delete(0,tkinter.END)
+        for task in tasks:
+            listbox.insert(tkinter.END, task)
+    except:   
+        tkinter.messagebox.showwarning(message="No data file.")        
+
 frame = tkinter.Frame(root)
 frame.pack()
 
@@ -47,6 +56,9 @@ button_delete.pack()
 
 button_save = tkinter.Button(root, text="Save tasks", width=48, command=save_task)
 button_save.pack()
+
+button_load = tkinter.Button(root, text="Load tasks", width=48, command=load_task)
+button_load.pack()
 
 
 root.mainloop()
